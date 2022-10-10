@@ -1,0 +1,10 @@
+# Base PKGs
+matplotlib
+numpy
+tqdm
+flask
+
+# OCR PKGs
+Pillow
+opencv-python
+pytesseract
