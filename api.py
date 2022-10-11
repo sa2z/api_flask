@@ -59,11 +59,13 @@ def response_ocr():
     ocr = OCR(img,args)
     res = ocr.process()
 
-    return Response(json.dumps({
+    ret = Response(json.dumps({
                                 'seq':pid,
                                 'img_fnm':img_fnm,
                                 'result':res
                             }),status=201,mimetype='application/json')
+    ret.headers['Access-Control-Allow-Origin'] = '*'
+    return ret
 # @app.route('/incomes')
 # def get_incomes():
 #     return jsonify(incomes)
