@@ -3,6 +3,7 @@ matplotlib
 numpy
 tqdm
 flask
+pandas 
 
 # OCR PKGs
 Pillow

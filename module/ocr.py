@@ -1,5 +1,5 @@
 import os, cv2
-# import pandas as pd
+import pandas as pd
 from PIL import Image
 import pytesseract
 # from StringIO import StringIO
