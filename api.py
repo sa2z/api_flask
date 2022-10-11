@@ -50,7 +50,7 @@ def response_ocr():
     if request.method == 'POST':
         if 'image' not in request.files:
             flash('No selected image file')
-            return 
+            pass
             # return redirect(request.url)
         img = request.files['image']
         img.save(args.fp)
