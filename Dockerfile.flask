@@ -1,0 +1,21 @@
+FROM ubuntu:20.04
+
+# tzdata 설치 시 사용자가 직업 timezone을 설정하도록 입력절차가 있는데, 이를 무시하기위함
+ARG DEBIAN_FRONTEND=noninteractive
+# tzdata 는 시스템환경변수 TZ으로 timezone 환경변수 지정
+ENV TZ=Asia/Seoul
+ENV TESSDATA_PREFIX="/usr/share/tesseract-ocr/4.00/tessdata/"
+
+# install system packages
+RUN apt-get update \
+    && apt-get install -y ca-certificates curl wget git zip nano screen build-essential unixodbc unixodbc-dev python3 python3-pip libgl1-mesa-glx\
+    && apt install -y tesseract-ocr tesseract-ocr-kor
+# mkdir -p /code && chmod -R 777 /code 
+RUN git clone https://github.com/sa2z/api_flask.git /code/api_flask \
+    && pip3 install -r /code/api_flask/requirements.txt
+
+
+VOLUME ["/data/flask","/data/flask"]
+EXPOSE 5000
+WORKDIR /code/api_flask
+ENTRYPOINT python3 api.py
